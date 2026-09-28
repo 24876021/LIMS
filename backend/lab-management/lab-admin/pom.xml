@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>com.thematrix</groupId>
+        <artifactId>lab-management</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    
+    <artifactId>lab-admin</artifactId>
+    <name>Lab Management Admin</name>
+    <description>启动模块：聚合所有子模块</description>
+
+    <dependencies>
+        <!-- Spring Boot Web（启动模块直接依赖，确保IDEA能正确解析） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 公共模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 设备管理模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-equipment</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 人员管理模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-personnel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 安全管理模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-safety</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 预约管理模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-reservation</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 资源管理模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-resources</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 报告管理模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-reports</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 仪表盘子模块 -->
+        <dependency>
+            <groupId>com.thematrix</groupId>
+            <artifactId>lab-dashboard</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.thematrix.labmanagement.LabManagementApplication</mainClass>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

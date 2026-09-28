@@ -1,0 +1,41 @@
+package com.thematrix.labmanagement.common.filter;
+
+import com.thematrix.labmanagement.common.utils.CommonUtil;
+import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+
+/**
+ * 用户首次登录校验器(登录拦截)
+ */
+public class CustomAuthenticationFilter  extends UsernamePasswordAuthenticationFilter  {
+
+    private static final String APPLICATION_JSON_UTF8_VALUE_WITH_SPACE = "application/json; charset=UTF-8";
+    private static final String ACCOUNT = "account";
+    private static final String PASSWORD = "password";
+
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        String contentType = request.getContentType();
+        if (MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(contentType) ||
+                APPLICATION_JSON_UTF8_VALUE_WITH_SPACE.equalsIgnoreCase(contentType)) {
+
+            Map<String, Object> obj = CommonUtil.getBodyParametersFromRequest(request);
+
+            System.out.println("登录数据: " + obj);
+
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+                    obj.get(ACCOUNT), obj.get(PASSWORD));
+            setDetails(request, token);
+                return this.getAuthenticationManager().authenticate(token);
+        } else {
+            return super.attemptAuthentication(request, response);
+        }
+    }
+}

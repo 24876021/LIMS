@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-primary-600 rounded-lg transition-all cursor-pointer;
+}
+
+.sidebar-item.active {
+    @apply bg-primary-50 text-primary-600 font-medium;
+}
+
+.btn-primary {
+    @apply bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors flex items-center gap-2;
+}
+
+.btn-secondary {
+    @apply bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2;
+}
+
+.input-field {
+    @apply w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+}
+
+.card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6;
+}
+
+.table-container {
+    @apply overflow-x-auto;
+}
+
+.data-table {
+    @apply w-full text-left border-collapse;
+}
+
+.data-table th {
+    @apply py-3 px-4 text-sm font-medium text-gray-500 border-b border-gray-200 bg-gray-50;
+}
+
+.data-table td {
+    @apply py-3 px-4 text-sm text-gray-700 border-b border-gray-100;
+}
+
+.data-table tr:hover {
+    @apply bg-gray-50;
+}
+
+.status-badge {
+    @apply px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-available {
+    @apply bg-green-100 text-green-700;
+}
+
+.status-borrowed {
+    @apply bg-yellow-100 text-yellow-700;
+}
+
+.status-maintenance {
+    @apply bg-red-100 text-red-700;
+}
+
+.status-pending {
+    @apply bg-blue-100 text-blue-700;
+}
+
+.status-approved {
+    @apply bg-green-100 text-green-700;
+}
+
+.status-rejected {
+    @apply bg-red-100 text-red-700;
+}
+
+.tag-unlinked {
+    @apply inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-orange-50 text-orange-500 text-xs font-medium;
+}

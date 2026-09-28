@@ -1,0 +1,40 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: /*你的数据库密码*/
+    url: jdbc:mysql://localhost:3306/shiyanshi?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 5
+      min-idle: 5
+      max-active: 200
+      max-wait: 30000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 600000
+      validation-query: SELECT 1
+      test-while-idle: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  mvc:
+    path-match:
+      matching-strategy: ant-path-matcher
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+thematrix:
+  jwt:
+    header: Authorization
+    expire: 604800
+    secret: abcdefghabcdefghabcdefghabcdefgh
